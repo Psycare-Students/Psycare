@@ -11,10 +11,15 @@ import appointment from './routes/appointmentroutes.js'
 import chatRoutes from './routes/chatbotRoutes.js'
 import wellnessRoutes from './routes/wellnessRoutes.js'
 import userRoutes from './routes/user.js'
+import { createServer } from 'node:http';
+import { connectToSocket } from "./controllers/socketManager.js";
+import meetingRoutes from "./routes/meeting.js";
 
 dotenv.config();
 const app = express();
 
+const server = createServer(app);
+const io = connectToSocket(server); 
 app.use(express.json());
 
 // Import routes
@@ -46,6 +51,9 @@ app.use("/api/forum", forumRoutes);
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+
+
+app.use("/api/meetings", meetingRoutes);
 
 // 404 handler - must be after all routes
 app.use('*', (req, res) => {

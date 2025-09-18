@@ -16,12 +16,14 @@ import { useUser } from "./context/UserContext.jsx";
 import Profile from "./pages/Profile.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AuthHandler from "./AuthHandler.jsx";
+import ScheduleMeeting from "./components/Meetings.jsx";
 
 const queryClient = new QueryClient();
 
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import VideoMeetComponent from "./components/Meetings.jsx";
 
 const App = () => {
   const { user } = useUser?.() || {};
@@ -49,6 +51,7 @@ const App = () => {
               <Route path="/auth" element={<AuthSelection />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path='/:url' element={<VideoMeetComponent />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
