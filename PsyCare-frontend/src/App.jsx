@@ -25,8 +25,14 @@ import TestPage from "./components/TestPage.jsx";
 import AudioLibraryPage from "./pages/AudioLibraryPage.jsx";
 import VideoPage from "./pages/VideoPage.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
-import BreathingExercisesPage from "./pages/BreathingExercisesPage.jsx";
+// import BreathingExercisesPage from "./pages/BreathingExercisesPage.jsx";
 import InteractiveGamesPage from "./pages/InteractiveGamesPage.jsx";
+import StressManagement from "./pages/StressManagement.jsx";
+import MindfulnessPage from "./pages/MindfulnessPage.jsx";
+import WellnessBreathingPage from "./pages/BreathPage.jsx";
+import VideoLibraryPage from "./pages/VideoPage.jsx";
+
+
 
 
 const queryClient = new QueryClient();
@@ -58,8 +64,16 @@ const App = () => {
               <Route path="/auth" element={<AuthSelection />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/games/:title" element={<InteractiveGamesPage />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<Index />} />
+              <Route path="/library/:title" element={<AudioLibraryPage />} />
+              <Route path="/videos/:title" element={<VideoPage />} /> 
+              <Route path="/games/:title" element={<InteractiveGamesPage />} />
+              <Route path="/stress-management" element={<StressManagement />} />
+              <Route path="/sleep-library" element={<AudioLibraryPage />} />
+              <Route path="/breath" element={<WellnessBreathingPage />} />
+              <Route path="/mindfulness" element={<MindfulnessPage />} />
+              <Route path="/video-library" element={<VideoPage />} />
             </Routes>
           </BrowserRouter>
         </UserProvider>

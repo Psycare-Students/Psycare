@@ -98,7 +98,7 @@ export default function InteractiveGamesPage() {
           <div className="absolute inset-0 bg-white/50 backdrop-blur-sm z-1"></div>
           <div className="relative z-20 mx-auto max-w-5xl">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10 text-center font-poppins drop-shadow-lg">
-              {title}
+              Interactive - Games
             </h1>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

@@ -8,7 +8,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
         body {
-            /* Local background image and styling */
             background-image: url('../../src/assets/music_bg.jpg'); 
             background-size: cover;
             background-position: center;
@@ -25,7 +24,6 @@
             position: relative;
         }
 
-        /* Frosted glass overlay */
         body::before {
             content: '';
             position: absolute;
@@ -48,7 +46,6 @@
         }
 
         .game-container {
-            /* Main container for the puzzle and controls */
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -71,7 +68,7 @@
 
         #puzzle-container {
             display: grid;
-            border: 5px solid #a682e3; /* Purple border */
+            border: 5px solid #a682e3; 
             background-color: rgba(255, 255, 255, 0.6);
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -259,16 +256,24 @@
             }
             if (solved) {
                 isSolving = false;
-                statusDiv.textContent = 'Congratulations! You solved the puzzle! 🎉';
+                statusDiv.textContent = 'Puzzle Solved! 🎉 Starting a new puzzle...';
+
                 const pieces = puzzleContainer.children;
                 for (const piece of pieces) {
                     piece.style.border = '1px solid rgba(255,255,255,0.3)';
                     piece.draggable = false;
                 }
+
+                // Load a new puzzle after 2 seconds with a new random image
+                setTimeout(() => {
+                    image.src = `https://picsum.photos/800/800?random=${Date.now()}`;
+                }, 2000);
             }
         }
         
-        resetButton.addEventListener('click', createPuzzle);
+        resetButton.addEventListener('click', () => {
+            image.src = `https://picsum.photos/800/800?random=${Date.now()}`;
+        });
         window.addEventListener('resize', createPuzzle);
         
         image.onload = createPuzzle;
